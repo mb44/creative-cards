@@ -28,6 +28,7 @@ import CardInsideLeft from './components/card/CardInsideLeft.vue'
 import CardInsideRight from './components/card/CardInsideRight.vue'
 import CardBack from './components/card/CardBack.vue'
 import Footer from './components/Footer.vue'
+import FirebaseConfig from './firebaseConfig.js'
 
 export default {
   data: function() {
@@ -41,7 +42,7 @@ export default {
     cardInsideLeft: CardInsideLeft,
     cardInsideRight: CardInsideRight,
     cardBack: CardBack,
-    footer: Footer
+    ccFooter: Footer
   }
 }
 </script>
