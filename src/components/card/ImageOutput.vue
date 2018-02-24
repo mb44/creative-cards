@@ -32,11 +32,11 @@
         },
         watch: {
             displayImage: function() {
-                console.log(this.displayImage)
                 var storageRef = Firebase.storage().ref('/user_uploads/' + this.displayImage)
                 storageRef.getDownloadURL().then(function(url) {
                     var img = document.getElementById('outputImage')
                     img.src = url
+                    setDraggable();
                 })
             }
         },
@@ -47,6 +47,10 @@
                 }
             }
         }
+    }
+
+    function setDraggable() {
+        $('#outputImage').draggable();
     }
 </script>
 
@@ -60,5 +64,9 @@
     button {
         position: absolute;
         z-index: 1;
+    }
+
+    img {
+        width: 130%;
     }
 </style>
