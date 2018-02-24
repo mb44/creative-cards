@@ -5,11 +5,11 @@
             <div class="form-group">
                 <input @change="uploadFile" type="file" class="form-control-file" id="fileUpload">
             </div>
-            <progressbar value="0" max="100" id="progressBar"></progressbar>
+            <progress value="0" max="100" id="progressBar"></progress>
             <br>
             <img id="image">
-            <button type="button" id="setImageButton">Set Image</button>
-    </div>
+            <button type="button" id="setImageButton" style="display: none" @click="setImage">Set Image</button>
+        </div>
     </div>
 </template>
 
@@ -25,6 +25,8 @@ import Firebase from 'firebase'
         },
         methods: {
             uploadFile: function(event) {
+                document.getElementById("setImageButton").style.display = 'none'
+
                 this.file = event.target.files[0]
                 console.log('uploading...')
                 var storageRef = Firebase.storage().ref('/user_uploads/' + this.file.name)
@@ -41,8 +43,13 @@ import Firebase from 'firebase'
                 upload.on('state_changed', function(snapshot) {
                     var progress = 100 * (snapshot.bytesTransferred / snapshot.totalBytes )
                     document.getElementById('progressBar').value = progress;
+                    
+                    if (progress==100) {
+                        document.getElementById('setImageButton').style.display = 'inline-block'
+                    }
                 })
-
+            },
+            setImage: function() {
                 this.$emit('displayImageChanged', this.file.name)
             }
         }
