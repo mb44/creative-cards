@@ -2,7 +2,10 @@
     <div class="img-container" :style="styleObject" 
     @mouseover="showOptions=true"
     @mouseleave="showOptions=false">
-        <button type="button" v-show="showOptions" class="btn btn-outline-danger btrn-sm">Remove Image</button>
+        <button type="button" 
+        class="btn btn-outline-danger btrn-sm"
+        v-show="showOptions"
+        @click="clearImageProp">Remove Image</button>
 
         <img id="outputImage">
     </div>
@@ -19,7 +22,8 @@
             containerHeight: {
                 type: Number,
                 default: 200
-            }
+            },
+            clearImageProp: Function
         },
         data: function() {
             return {
