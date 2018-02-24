@@ -33,7 +33,9 @@ export default {
     },
     methods: {
         clearImage: function() {
-            this.imageName = "beach.jpg"
+            if (this.imageName != '') {
+                this.imageName = "beach.jpg"
+            }
         }
     },
     components: {
