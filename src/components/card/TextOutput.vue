@@ -18,14 +18,24 @@
                 </label>
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" value="right" v-model="setTextAlign"> Right
-                </label>
-                
+                </label>               
+            </div>
 
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" v-model="setBold" class="form-check-input"> Bold
+                </label>
+            </div>
+
+            <div class="form-check form-check-inline">
+                <label class="form-check-label">
+                    <input type="checkbox" v-model="setItalic" class="form-check-input"> Italic
+                </label>
             </div>
         </form>
         
 
-        <p :style="styleObject">
+        <p :style="styleObject" :class="{ bold: setBold, italic: setItalic}">
         {{displayText}}
         </p>
         </div>
@@ -44,7 +54,9 @@
             return {
                 showOptions: false,
                 setFontSize: '',
-                setTextAlign: ''
+                setTextAlign: '',
+                setBold: false,
+                setItalic: false
             }
         },
         computed: {
@@ -52,7 +64,8 @@
                 return {
                     fontSize: this.setFontSize + 'px',
                     textAlign: this.setTextAlign,
-                    height: this.containerHeight + "px"
+                    height: this.containerHeight + "px",
+                    
                 }
             }
         }
@@ -70,6 +83,26 @@
         border: 1px dotted grey;
         white-space: pre-line;
         overflow: hidden;
+    }
+
+    .bold {
+        font-weight: bold;       
+    }
+
+    .italic {
+        font-style: italic;
+    }
+
+    form {
+        position: absolute;
+        border: 1px dotted grey;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        padding-bottom: 5px;
+    }
+
+    select {
+        height: 40%;
     }
 </style>
 
