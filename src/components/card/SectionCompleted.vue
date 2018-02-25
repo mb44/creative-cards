@@ -5,7 +5,7 @@
                 <input type="checkbox" 
                 class="form-check-input"
                 v-model="checked" 
-                @click="sectionCompledted"
+                @click="sectionCompleted"
                 >Mark section as completed    
             </div>            
         </div>
@@ -22,8 +22,8 @@ export default {
         }
     },
     methods: {
-        sectionCompleted: function(event) {
-            EventBus.$emit('mark-as-compledted', this.checked)
+        sectionCompleted: function() {
+            EventBus.$emit('mark-as-completed', this.checked)
         }
     }
 }
