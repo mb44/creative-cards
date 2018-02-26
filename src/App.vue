@@ -4,7 +4,7 @@
       <div class="col-sm-12">
         <nav-header @pageWasChanged="currentPage = $event"></nav-header>
         
-        <div id="instructions"  class="text-center italic">
+        <div id="instructions" class="text-center italic">
         <div class="row">
           <div class="col-sm-6">
             <p><em>&larr; Make changes in the edit card area below</em></p>
@@ -16,7 +16,8 @@
         </div>
         <transition name="fade" 
         mode="out-in"
-        @enter="enter">
+        @enter="enter"
+        appear>
         <keep-alive>     
           <component :is="currentPage"></component>
         </keep-alive>    
@@ -120,16 +121,16 @@ select {
 }
 
 .scale-leave-active {
-        animation: scale-out 0.5s;
+  animation: scale-out 0.5s;
 }
 
 @keyframes scale-in {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
 }
 
 @keyframes scale-out {
-    0% { transform: scale(1); }
-    100% { transform: scale(0); }
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
 }
 </style>
