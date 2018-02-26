@@ -3,7 +3,20 @@
     <div class="row">
       <div class="col-sm-12">
         <nav-header @pageWasChanged="currentPage = $event"></nav-header>
-        <transition name="fade" mode="out-in">
+        
+        <div id="instructions"  class="text-center italic">
+        <div class="row">
+          <div class="col-sm-6">
+            <p><em>&larr; Make changes in the edit card area below</em></p>
+          </div>
+          <div class="col-sm-6">
+            <p><em>And they will show on the card! &rarr;</em></p>
+          </div>
+        </div>
+        </div>
+        <transition name="fade" 
+        mode="out-in"
+        @enter="enter">
         <keep-alive>     
           <component :is="currentPage"></component>
         </keep-alive>    
@@ -39,6 +52,12 @@ export default {
       currentPage: 'cardFront'
     }
   },
+  methods: {
+    enter: function(el, done) {
+      document.getElementById('instructions').style.display = 'none';
+      done()
+    }
+  },
   components: {
     navHeader: Header,
     cardFront: CardFront,
@@ -64,17 +83,6 @@ a {
   cursor: pointer;
 }
 
-p {
-  font-family: 'Tangerine', cursive;
-  font-size: 42px;
-  line-height: 42px;
-  text-shadow: 2px 2px 2px #aaa;
-  color: #4d4d4d;
-  margin: 5px 0;
-  border: 1px dotted grey;
-  white-space: pre-line;
-  overflow: hidden;
-}
 
 .bold {
     font-weight: bold;       
