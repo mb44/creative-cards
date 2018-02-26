@@ -3,7 +3,7 @@
     @mouseover="showOptions=true"
     @mouseleave="showOptions=false">
 
-    <transition name="fade">
+    <transition name="scale">
         <button type="button" 
         class="btn btn-outline-danger btrn-sm"
         v-show="showOptions"
@@ -72,4 +72,23 @@
     img {
         width: 130%;
     }
+
+    .scale-enter-active {
+        animation: scale-in 0.5s;
+    }
+
+    .scale-leave-active {
+        animation: scale-out 0.5s;
+    }
+
+    @keyframes scale-in {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+    }
+
+    @keyframes scale-out {
+    0% { transform: scale(1); }
+    100% { transform: scale(0); }
+    }
+
 </style>
