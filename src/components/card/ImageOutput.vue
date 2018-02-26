@@ -2,10 +2,13 @@
     <div class="img-container" :style="styleObject" 
     @mouseover="showOptions=true"
     @mouseleave="showOptions=false">
+
+    <transition name="fade">
         <button type="button" 
         class="btn btn-outline-danger btrn-sm"
         v-show="showOptions"
         @click="clearImageProp">Remove Image</button>
+    </transition>
 
         <img id="outputImage">
     </div>
